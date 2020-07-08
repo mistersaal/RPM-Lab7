@@ -1,0 +1,53 @@
+@startuml
+
+class node {
+    +value: A
+    +left: node*
+    +right: node*
+}
+node o-- node
+
+class BinaryTree {
+    +BinaryTree(): void
+    +~BinaryTree(): void
+    +insert(value: T): void
+    +deleteTree(): void
+    +search(value: T): node<T>
+    +print(): void
+    +print(value: T): void
+    +isEmpty(): bool
+    +count(): int
+    -root: node<T>*
+    -deleteNode(leaf: node<T>*): void
+    -insert(value: T, leaf: node<T>*): void
+    -insertLeft(value: T, leaf: node<T>*): void
+    -insertRight(value: T, leaf: node<T>*): void
+    -search(value: T, leaf: node<T>*): node<T>
+    -print(leaf: node<T>*): void
+    -print(value: T): void
+    -countElements(leaf: node<T>*, count: int&): int
+}
+class Menu {
+    +Menu(): void
+    +~Menu(): void
+    +show(): void
+    -tree: BinaryTree<T>*
+    -mainMenu(): void
+    -mainMenuAction(): void
+    -insertAction(): void
+    -searchAction(): void
+    -printAction(): void
+    -countAction(): void
+    -emptyAction(): void
+    -deleteAction(): void
+}
+class TypeMenu {
+    {static}+show(): void
+    {static}-showMenuForType(): void
+}
+
+BinaryTree o-- node
+Menu o-- BinaryTree
+TypeMenu o-- Menu
+
+@enduml
